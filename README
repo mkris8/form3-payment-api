@@ -1,0 +1,77 @@
+Provide a design for part of a payments API. Design requirements:
+• API should be RESTFUL
+• API should be able to:
+• Fetch a payment resource
+• Create update and delete a payment resource o List a collection of payment resources
+
+
+• Get requests :
+http://localhost:8080/form3/payment/test
+http://localhost:8080/form3/payment/all
+
+• Post
+http://localhost:8080/form3/payment/create
+
+Sample post request for testing:
+
+{
+    "type": "Payment",
+    "id": "4ee3a8d8-ca7b-4290-a52c-dd5b6165ec43",
+    "version": 0,
+    "organisation_id": "743d5b63-8e6f-432e-a8fa-c5d8d2ee5fcb",
+    "attributes": {
+        "amount": 100.21,
+        "beneficiaryParty": {
+            "account_name": "W Owens",
+            "account_number": 31926819,
+            "account_number_code": null,
+            "account_type": 0,
+            "address": "1 The Beneficiary Localtown SE2",
+            "bank_id": 403000,
+            "bank_id_code": "GBDSC",
+            "name": "Wilfred Jeremiah Owens"
+        }
+    },
+    "chargesInformation": {
+        "bearerCode": "SHAR",
+        "senderCharges": [
+            {
+                "amount": "10.00",
+                "currency": "USD"
+            }
+        ],
+        "receiverChargesAmount": 1,
+        "receiverChargesCurrency": "USD"
+    },
+    "currency": "GBP",
+    "debtorParty": {
+        "accountName": "EJ Brown Black",
+        "accountNumber": "GB29XABC10161234567801",
+        "accountNumberCode": "IBAN",
+        "address": "10 Debtor Crescent Sourcetown NE1",
+        "bankId": "203301",
+        "bankIdCode": "GBDSC",
+        "name": "Emelia Jane Brown"
+    },
+    "endToEndReference": "Wil piano Jan",
+    "fx": null,
+    "numericReference": null,
+    "sponsorParty": null
+}
+
+• Put
+http://localhost:8080/form3/payment/delete/{id-to-delete}
+
+Steps to run
+------------
+1) mvn clean
+2) mvn install
+3) start as spring boot app. All the API calls can be testing using any REST client.
+
+To run the integration tests :
+4) Run all of the above steps.
+5) Annotate @Test to each of the test methods in PaymentControllerIntegrationTest.java and save.
+6) mvn install
+7) Right click on PaymentControllerIntegrationTest.java and run as jUnit Test.
+
+
