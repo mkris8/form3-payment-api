@@ -2,7 +2,8 @@ package com.form3.payment.services;
 
 import java.util.List;
 
-import com.form3.payment.model.Payment;
+import com.form3.payment.model.json.Payment;
+
 
 public interface PaymentManager {
 

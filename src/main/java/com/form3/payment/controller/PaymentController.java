@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.form3.payment.model.Payment;
+import com.form3.payment.model.json.Payment;
 import com.form3.payment.services.PaymentManager;
 
 @RestController("paymentController")

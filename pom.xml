@@ -87,7 +87,17 @@
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 		</dependency>
-
+		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.3.1</version>
+		</dependency>
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -176,7 +186,37 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
+<!-- Uncomment this to auto-generate Model objects from JSON schema under main/resources/schema/form3.json -->
+<!--This needs to be executed only once to generate the model Objects at runtime -->
+
+<!-- 
+			<plugin>
+						<groupId>org.jsonschema2pojo</groupId>
+						<artifactId>jsonschema2pojo-maven-plugin</artifactId>
+						<version>0.4.21</version>
+						<configuration>
+							<annotationStyle>gson</annotationStyle>
+							<useCommonsLang3>true</useCommonsLang3>
+							<removeOldOutput>true</removeOldOutput>
+							<outputDirectory>${basedir}/src/main/java/com/form3/payment/model</outputDirectory>
+							<sourceType>json</sourceType>
+							<includes>
+								<include>*.json</include>
+							</includes>
+							<targetPackage>json</targetPackage>
+							<sourceDirectory>${basedir}/src/main/resources/schema</sourceDirectory>
+						</configuration>
+						<executions>
+							<execution>
+								<goals>
+									<goal>generate</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+ -->
+ 
 		</plugins>
 	</build>
 </project>
