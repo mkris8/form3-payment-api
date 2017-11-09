@@ -66,7 +66,9 @@ Steps to run
 ------------
 1) mvn clean
 2) mvn install
-3) start as spring boot app. All the API calls can be testing using any REST client.
+3) mvn spring-boot:run 
+
+All the REST calls can now be tested using any REST client(eg: POSTMAN).
 
 To run the integration tests :
 4) Run all of the above steps.
