@@ -39,6 +39,7 @@ public class Payment implements Serializable{
 	
 	private SponsorParty sponsorParty;
 	
+	private String errorMessage;
 	
 	public String getType() {
 		return type;
@@ -164,5 +165,11 @@ public class Payment implements Serializable{
 	}
 	public void setSponsorParty(SponsorParty sponsorParty) {
 		this.sponsorParty = sponsorParty;
+	}
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
 	}
 }

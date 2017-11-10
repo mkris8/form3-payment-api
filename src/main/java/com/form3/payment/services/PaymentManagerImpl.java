@@ -22,6 +22,7 @@ public class PaymentManagerImpl implements PaymentManager {
 
 	//Map to store Payments, ideally this is a DAO layer to database persistence
 	Map<String, Payment> paymentData = new HashMap<String, Payment>();
+	private final String errorMessage = "The requested Payment does not exist for id:";
 			
 	@Override
 	public Payment getTestPayment() {
@@ -33,7 +34,16 @@ public class PaymentManagerImpl implements PaymentManager {
 
 	@Override
 	public Payment getPayment(String paymentId) {
-		return paymentData.get(paymentId);
+		Payment payment;
+		
+		if(paymentData.containsKey(paymentId)) {
+			payment =  paymentData.get(paymentId);
+		} else {
+			payment = new Payment();
+			payment.setErrorMessage(errorMessage +paymentId);
+		}
+		
+		return payment;
 	}
 
 	@Override
@@ -81,7 +91,15 @@ public class PaymentManagerImpl implements PaymentManager {
 
 	@Override
 	public Payment deletePayment(String id) {
-		Payment payment = paymentData.get(id);
+		Payment payment;
+		
+		if(paymentData.containsKey(id)) {
+			payment =  paymentData.get(id);
+		} else {
+			payment = new Payment();
+			payment.setErrorMessage(errorMessage+id);
+		}
+		
 		paymentData.remove(id);
 		
 		return payment;
