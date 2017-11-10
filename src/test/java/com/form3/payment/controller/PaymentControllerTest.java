@@ -17,12 +17,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.Assert;
 
-import com.form3.payment.model.Attributes;
-import com.form3.payment.model.BeneficiaryParty;
-import com.form3.payment.model.ChargesInformation;
-import com.form3.payment.model.DebtorParty;
-import com.form3.payment.model.Payment;
-import com.form3.payment.model.SenderCharges;
+import com.form3.payment.model.json.Attributes;
+import com.form3.payment.model.json.BeneficiaryParty;
+import com.form3.payment.model.json.ChargesInformation;
+import com.form3.payment.model.json.DebtorParty;
+import com.form3.payment.model.json.Payment;
+import com.form3.payment.model.json.SenderCharge;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -83,13 +83,13 @@ public class PaymentControllerTest {
 		payment.setVersion(0);
 		payment.setOrganisation_id("743d5b63-8e6f-432e-a8fa-c5d8d2ee5fcb");
 		
-		attributes.setAmount(100.21);
-		beneficiaryParty.setAccount_name("W Owens");
-		beneficiaryParty.setAccount_number(31926819);
-		beneficiaryParty.setAccount_type(0);
+		attributes.setAmount("100.21");
+		beneficiaryParty.setAccountName("W Owens");
+		beneficiaryParty.setAccountNumber("31926819");
+		beneficiaryParty.setAccountType(0);
 		beneficiaryParty.setAddress("1 The Beneficiary Localtown SE2");
-		beneficiaryParty.setBank_id(403000);
-		beneficiaryParty.setBank_id_code("GBDSC");
+		beneficiaryParty.setBankId("403000");
+		beneficiaryParty.setBankIdCode("GBDSC");
 		beneficiaryParty.setName("Wilfred Jeremiah Owens");
 		attributes.setBeneficiaryParty(beneficiaryParty);
 		
@@ -98,19 +98,19 @@ public class PaymentControllerTest {
 		ChargesInformation chargesInformation = new ChargesInformation();
 		chargesInformation.setBearerCode("SHAR");
 		
-		SenderCharges senderCharges1 = new SenderCharges();
-		senderCharges1.setAmount("5.00");
-		senderCharges1.setCurrency("GBP");
-		SenderCharges senderCharges2 = new SenderCharges();
-		senderCharges2.setAmount("10.00");
-		senderCharges2.setCurrency("USD");
-		List<SenderCharges> senderChargesList = new ArrayList<SenderCharges>();
-		senderChargesList.add(senderCharges1);
-		senderChargesList.add(senderCharges2);
+		SenderCharge SenderCharge1 = new SenderCharge();
+		SenderCharge1.setAmount("5.00");
+		SenderCharge1.setCurrency("GBP");
+		SenderCharge SenderCharge2 = new SenderCharge();
+		SenderCharge2.setAmount("10.00");
+		SenderCharge2.setCurrency("USD");
+		List<SenderCharge> SenderChargeList = new ArrayList<SenderCharge>();
+		SenderChargeList.add(SenderCharge1);
+		SenderChargeList.add(SenderCharge2);
 		
-		chargesInformation.setSenderCharges(senderChargesList);
+		chargesInformation.setSenderCharges(SenderChargeList);
 		
-		chargesInformation.setReceiverChargesAmount(1.00);
+		chargesInformation.setReceiverChargesAmount("1.00");
 		chargesInformation.setReceiverChargesCurrency("USD");
 		payment.setChargesInformation(chargesInformation);
 		payment.setCurrency("GBP");
@@ -126,5 +126,5 @@ public class PaymentControllerTest {
 		payment.setDebtorParty(debtorParty);
 		payment.setEndToEndReference("Wil piano Jan");
 	}
-
+	
 }
